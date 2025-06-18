@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Workouts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment (ionChange)="filterWorkouts($event)" [value]="selectedType">
+    <ion-segment-button *ngFor="let type of types" [value]="type">
+      <ion-label>{{ type === 'all' ? 'All' : type }}</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <ion-list>
+    <ion-item *ngFor="let workout of workouts" (click)="openWorkoutDetails(workout.id)" detail>
+      <ion-thumbnail slot="start" class="workout-thumbnail">
+        <img [src]="workout.image" alt="{{ workout.name }}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ workout.name }}</h2>
+        <p>{{ workout.type }} | {{ workout.duration }}</p>
+        <p class="workout-desc">{{ workout.description }}</p>
+      </ion-label>
+      <ion-badge *ngIf="workout.completed" color="success" slot="end">Completed</ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>

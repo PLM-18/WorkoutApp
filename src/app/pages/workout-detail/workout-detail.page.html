@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/workouts"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ workout?.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="workout">
+    <div class="workout-header">
+      <img [src]="workout.image" alt="{{ workout.name }}" class="workout-image">
+      <h1>{{ workout.name }}</h1>
+      <p class="workout-meta">
+        <ion-badge color="primary">{{ workout.type }}</ion-badge>
+        <ion-badge color="secondary">{{ workout.duration }}</ion-badge>
+      </p>
+    </div>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Description</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ workout.description }}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Exercises</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let exercise of workout.exercises; let i = index">
+            <ion-label>
+              <h2>{{ i+1 }}. {{ exercise.name }}</h2>
+              <p>{{ exercise.sets }} sets x {{ exercise.reps }} reps</p>
+              <p *ngIf="exercise.equipment !== 'None'"><strong>Equipment:</strong> {{ exercise.equipment }}</p>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <div class="completion-section">
+      <ion-button expand="block" (click)="markAsCompleted()" [disabled]="workout.completed">
+        {{ workout.completed ? 'Completed!' : 'Mark as Completed' }}
+      </ion-button>
+
+      <p *ngIf="workout.completed" class="completion-date">
+        Completed on: {{ workout.dateCompleted | date:'medium' }}
+      </p>
+    </div>
+  </div>
+</ion-content>

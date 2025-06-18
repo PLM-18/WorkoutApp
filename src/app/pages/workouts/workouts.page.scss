@@ -1,0 +1,26 @@
+ion-segment {
+  padding: 10px 0;
+}
+
+.workout-thumbnail {
+  width: 80px;
+  height: 80px;
+
+  img {
+    border-radius: 8px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.workout-desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+ion-badge {
+  margin-left: 10px;
+}

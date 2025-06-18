@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>My Progress</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="completedWorkouts.length > 0">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Completed Workouts</ion-card-title>
+        <ion-card-subtitle>You've completed {{ completedWorkouts.length }} workout(s)!</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-list>
+        <ion-item *ngFor="let workout of completedWorkouts">
+          <ion-thumbnail slot="start">
+            <img [src]="workout.image" alt="{{ workout.name }}">
+          </ion-thumbnail>
+          <ion-label>
+            <h2>{{ workout.name }}</h2>
+            <p>{{ workout.type }} | {{ workout.duration }}</p>
+            <p *ngIf="workout.dateCompleted">
+              Completed: {{ workout.dateCompleted | date:'medium' }}
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-button expand="block" color="danger" (click)="resetProgress()">
+      Reset Progress
+    </ion-button>
+  </div>
+
+  <div *ngIf="completedWorkouts.length === 0" class="empty-state">
+    <ion-icon name="fitness-outline" class="empty-icon"></ion-icon>
+    <h2>No completed workouts yet</h2>
+    <p>Complete workouts to track your progress here!</p>
+  </div>
+</ion-content>

@@ -1,0 +1,33 @@
+.workout-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.workout-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.workout-meta {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+ion-card {
+  margin-bottom: 20px;
+}
+
+.completion-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.completion-date {
+  margin-top: 10px;
+  font-style: italic;
+  color: var(--ion-color-success);
+}

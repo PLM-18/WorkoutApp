@@ -1,0 +1,19 @@
+.empty-state {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.empty-icon {
+  font-size: 80px;
+  color: var(--ion-color-medium);
+}
+
+ion-thumbnail {
+  width: 60px;
+  height: 60px;
+
+  img {
+    border-radius: 6px;
+    object-fit: cover;
+  }
+}
